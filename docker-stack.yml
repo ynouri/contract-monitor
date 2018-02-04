@@ -4,12 +4,11 @@ services:
 
   mongodb:
     image: mongo:3.6.2-jessie
-    container_name: "mongodb"
     environment:
       - MONGO_DATA_DIR=/data/db
       - MONGO_LOG_DIR=/dev/null
     volumes:
-      - ./data/db:/data/db
+      - mongodb-data:/data/db
     networks:
       - webnet
     ports:
@@ -47,3 +46,9 @@ services:
 
 networks:
   webnet:
+
+
+volumes:
+  mongodb-data:
+    external:
+      name: mongodb-data

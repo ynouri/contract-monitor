@@ -12,7 +12,7 @@ Those 3 components are containerized using Docker.
 
 ## How to deploy using Docker
 
-```
+```bash
 # Download the docker-stack file from this repository
 curl https://raw.githubusercontent.com/ynouri/contract-monitor/master/docker-stack.yml -o docker-stack.yml
 
@@ -21,6 +21,12 @@ docker swarm init
 
 # Deploy the stack described in the docker-stack file
 docker stack deploy -c docker-stack.yml contract-monitor
+
+# Check if the MongoDB service deployment worked
+docker service ps contract-monitor_mongodb --no-trunc
+
+# Delete the stack
+docker stack rm contract-monitor
 
 ```
 
