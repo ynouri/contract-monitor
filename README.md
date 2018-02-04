@@ -9,3 +9,7 @@ The contract monitor is organized around 3 main components:
 3. A simple React front web interface which displays the results stored in MongoDB
 
 Those 3 components are containerized using Docker.
+
+## How to deploy using Docker
+
+
