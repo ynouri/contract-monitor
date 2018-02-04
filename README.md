@@ -12,4 +12,16 @@ Those 3 components are containerized using Docker.
 
 ## How to deploy using Docker
 
+```
+# Download the docker-stack file from this repository
+curl https://raw.githubusercontent.com/ynouri/contract-monitor/master/docker-stack.yml -o docker-stack.yml
+
+# Initialize a single machine Docker swarm
+docker swarm init
+
+# Deploy the stack described in the docker-stack file
+docker stack deploy -c docker-stack.yml contract-monitor
+
+```
+
 
