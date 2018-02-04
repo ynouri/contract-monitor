@@ -1,4 +1,4 @@
-version: "3"
+version: "3.2"
 
 services:
 
@@ -32,6 +32,10 @@ services:
         delay: 10s
         max_attempts: 3
         window: 120s
+    volumes:
+      - type: bind
+        source: /Users/ynouri/Dropbox/Projects/contract_explorer/contract-monitor/worker
+        target: /usr/src/worker
 
   visualizer:
     image: dockersamples/visualizer:stable
