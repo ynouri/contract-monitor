@@ -14,7 +14,7 @@ def last_block_summary():
 		tx = web3.eth.getTransaction(t)
 		if(tx.input != '0x'): contract_txs.append(tx)
 
-	summary = """BRAH! TEST 2!<br/>Last block number = {:,}<br/>
+	summary = """TEST 4!<br/>Last block number = {:,}<br/>
 	Gas used = {:.3f} eth<br/>
 	Average gas by tx = {:.3f} eth<br/>
 	Number of txs = {}<br/>
