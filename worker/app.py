@@ -1,14 +1,17 @@
 import os
 import monitor
-
+from pymongo import MongoClient
 from flask import Flask
+
 app = Flask(__name__)
 
 @app.route('/')
 def hello():
-	summary = monitor.last_block_summary()
+	summary = "test"
+	client = MongoClient('mongodb:27017')
+	db = client.myFirstMB
+	db.countries.insert({"name" : "Canada"})
 	return summary
-
 
 if __name__ == '__main__':
 	# Bind to PORT if defined, otherwise default to 5000.
