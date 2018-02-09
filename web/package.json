@@ -1,9 +1,10 @@
 {
-  "name": "web",
-  "version": "0.0.0",
+  "name": "contract-monitor_web",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "node ./bin/www",
+    "devstart": "nodemon ./bin/www"
   },
   "dependencies": {
     "async": "^2.6.0",

@@ -11,6 +11,7 @@ ADD . /usr/src/worker
 RUN pip install --trusted-host pypi.python.org -r requirements.txt
 
 # Make port 5000 available to the world outside this container
+ENV PORT 5000
 EXPOSE 5000
 
 # Define environment variable
