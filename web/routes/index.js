@@ -1,14 +1,18 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'AHAHA INDEED' });
+// Require controller module
+var controller = require('../controllers/controller');
+
+// Home page
+router.get('/', controller.index);
+
+// Redirect /tx to /
+router.get('/tx', function(req, res) {
+  res.redirect('/');
 });
 
-/* GET txs page. */
-router.get('/tx/:id', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
+// Tx details
+router.get('/tx/:id', controller.tx_detail);
 
 module.exports = router;
