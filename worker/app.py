@@ -8,8 +8,11 @@ if __name__ == '__main__':
     # Open MongoDB connection
     mongo_host = os.environ.get('MONGO_HOST','localhost')
     mongo_port = os.environ.get('MONGO_PORT','27017')
-    client = MongoClient(mongo_host + ':' + mongo_port)
+    mongo = mongo_host + ":" + mongo_port
+    print("Connecting to DB:", mongo)
+    client = MongoClient(mongo)
     db = client.TestDB2
+    print("Done.")
 
     # Initialize block number where the worker starts
     block_number = 0
@@ -28,9 +31,10 @@ if __name__ == '__main__':
             txs = monitor.contract_creation_txs(block_number)
 
             # Insert in mongodb
-            print("Transactions with contract creation:")
-            print(txs)
-            if txs: db.txs.insert_many(txs)
+            print("Transactions with contract creation:", len(txs))
+            if txs:
+                db.txs.insert_many(txs)
+                print("Transactions inserted.")
 
-        # Note: with this implementation
+        # Note: with the time.sleep implementation, we might miss some blocks
         time.sleep(1)

@@ -22,4 +22,4 @@ ENV MONGO_HOST "mongodb"
 ENV MONGO_PORT "27017"
 
 # Run app.py when the container launches
-CMD ["python", "app.py"]
+CMD ["python", "-u", "app.py"]
