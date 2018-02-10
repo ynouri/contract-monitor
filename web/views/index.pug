@@ -2,4 +2,11 @@ extends layout
 
 block content
   h1= title
-  p #{title}
+
+  ul
+  each tx in txs_list
+    li 
+      a(href=tx.etherscan_url) #{tx.hash} 
+
+  else
+    li No txs.

@@ -7,7 +7,8 @@ var TxSchema = new Schema(
     blockNumber: {type: Number},
     hash: {type: String},
     input: {type: String},
-  }
+  },
+  { collection: 'txs' }
 );
 
 // Virtual properties

@@ -22,5 +22,10 @@ EXPOSE 3000
 # Define environment variable
 ENV NAME "Contract monitor web"
 
-# Starts app
+# Production
+#ENV NODE_ENV "production"
+#CMD [ "npm", "start"]
+
+# Development
+ENV NODE_ENV "development_docker"
 CMD [ "npm", "run", "devstart" ]
