@@ -20,8 +20,6 @@ services:
 
   worker:
     image: contract-monitor_worker:latest
-    ports:
-      - "5000:5000"
     networks:
       - webnet
     deploy:
@@ -40,7 +38,7 @@ services:
   web:
     image: contract-monitor_web:latest
     ports:
-      - "3000:3000"
+      - "80:3000"
     networks:
       - webnet
     deploy:
