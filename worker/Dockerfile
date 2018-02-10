@@ -14,8 +14,12 @@ RUN pip install --trusted-host pypi.python.org -r requirements.txt
 ENV PORT 5000
 EXPOSE 5000
 
-# Define environment variable
+# Name
 ENV NAME "Contract monitor worker"
+
+# MongoDB
+ENV MONGO_HOST "mongodb"
+ENV MONGO_PORT "27017"
 
 # Run app.py when the container launches
 CMD ["python", "app.py"]
