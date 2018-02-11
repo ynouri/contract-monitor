@@ -13,25 +13,20 @@ def last_block_number():
 
 # Returns a dict of transactions involved in a contract creation
 def contract_creation_txs(block_number):
-    print(block_number)
-    try:
-        block = web3.eth.getBlock(block_number)
-    except Error as err:
-        print(err)
-    # If no transactions, exit
-    if not block: return []
-    # If transactions, apply the filter
-    txs = []; i = 0
-    for t in block.transactions:
-        tx = web3.eth.getTransaction(t)
-        if(tx and tx.input != '0x'):
+    print("Block # " + str(block_number))
+    block = web3.eth.getBlock(block_number, full_transactions=True)
+    if not block:
+        print("Block request failed (block # " + str(block_number) + ")")
+        return []
+    txs = []
+    for tx in block.transactions:
+        if tx.to == None:
             txs.append({
-            'blockNumber': tx.blockNumber,
-            'hash': tx.hash.hex(),
-            'input': tx.input
-            })
-            i = i + 1
-        #if i >= 2: break
+                'blockNumber': tx.blockNumber,
+                'hash': tx.hash.hex(),
+                'input': tx.input
+            });
+            print("https://etherscan.io/tx/" + tx.hash.hex())
     return txs
 
 # Returns a summary of the last block

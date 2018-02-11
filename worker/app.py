@@ -19,8 +19,8 @@ if __name__ == '__main__':
 
     # Check new blocks every second
     while True:
-        print("Checking block number...")
-        last_block_number = monitor.last_block_number()
+        print("Checking block number (n-10)...")
+        last_block_number = monitor.last_block_number() - 10
 
         # Check if we're at a new block
         if last_block_number > block_number:
