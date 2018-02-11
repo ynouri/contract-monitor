@@ -2,7 +2,7 @@
 Web interface to monitor new contracts created on the Ethereum blockchain.
 
 ## TODO list
-1. Worker: refine the filtering of contract creation txs, based on input data
+1. ~~Worker: refine the filtering of contract creation txs, based on input data~~
 1. Web & Worker: add a timestamp to txs so that they can be ordered by date. Has to be Mongoose/pymongo compatible
 1. Web: add asynchronous refresh of the txs list
 1. Web: refine CSS, add bootstrap

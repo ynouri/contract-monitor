@@ -2,13 +2,13 @@
 
 var config = {
   production: {
-    mongodb: 'mongodb://mongodb:27017/TestDB2'
+    mongodb: 'mongodb://mongodb:27017/TestDB3'
   },
   development_docker: {
-    mongodb: 'mongodb://mongodb:27017/TestDB2'
+    mongodb: 'mongodb://mongodb:27017/TestDB3'
   },
   default: {
-    mongodb: 'mongodb://localhost:27017/TestDB2'
+    mongodb: 'mongodb://localhost:27017/TestDB3'
   }
 }
 

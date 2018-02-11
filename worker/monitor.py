@@ -24,7 +24,8 @@ def contract_creation_txs(block_number):
             txs.append({
                 'blockNumber': tx.blockNumber,
                 'hash': tx.hash.hex(),
-                'input': tx.input
+                'input': tx.input,
+                'timestamp': block.timestamp
             });
             print("https://etherscan.io/tx/" + tx.hash.hex())
     return txs

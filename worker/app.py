@@ -11,7 +11,7 @@ if __name__ == '__main__':
     mongo = mongo_host + ":" + mongo_port
     print("Connecting to DB:", mongo)
     client = MongoClient(mongo)
-    db = client.TestDB2
+    db = client.TestDB3
     print("Done.")
 
     # Initialize block number where the worker starts

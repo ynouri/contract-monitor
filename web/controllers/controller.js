@@ -3,7 +3,8 @@ var Tx = require('../models/tx');
 // Returns the transaction list view
 exports.index = function(req, res) {
   Tx.find({})
-    .limit(10)
+    .limit(100)
+    .sort('-timestamp')
     .exec(function (err, txs_list_) {
       if (err) { return next(err); }
       //Successful, so render
