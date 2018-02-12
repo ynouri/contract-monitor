@@ -20,9 +20,11 @@ exports.tx_detail = function(req, res) {
 
 // Returns transaction list JSON
 exports.txs_list_json = function(req, res, next) {
+  query_ts = req.query.ts || 0
   Tx.find({})
-    .limit(10)
+    .gt('timestamp', query_ts)
     .sort('-timestamp')
+    .limit(100)
     .select('-_id hash timestamp')
     .exec(function (err, txs_list_) {
       if (err) { return next(err); }

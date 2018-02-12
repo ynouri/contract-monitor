@@ -8,7 +8,7 @@ var TxSchema = new Schema(
     blockNumber: {type: Number},
     hash: {type: String},
     input: {type: String},
-    timestamp: {type: String}
+    timestamp: {type: Number}
   },
   { collection: 'txs',
     toObject: {virtuals: false},
