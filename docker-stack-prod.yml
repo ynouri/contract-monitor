@@ -30,10 +30,6 @@ services:
         delay: 10s
         max_attempts: 3
         window: 120s
-    volumes:
-      - type: bind
-        source: ./worker
-        target: /usr/src/worker
 
   web:
     image: nouri/contract-monitor_web:v0.1
@@ -49,10 +45,7 @@ services:
         delay: 10s
         max_attempts: 3
         window: 120s
-    volumes:
-      - type: bind
-        source: ./web
-        target: /usr/src/web
+
 
 networks:
   webnet:
