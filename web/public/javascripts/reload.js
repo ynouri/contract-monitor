@@ -17,7 +17,12 @@ function load_txs() {
       // Update the rolling time stamp with the most recent
       rolling_ts = data[0].timestamp
       $.each(data, function() {
-        items.push( "<p>" + timestamp_formatted(this.timestamp) + " - " + etherscan_a_link(this.hash) + "</p>" );
+        items.push(
+          '<li class="list-group-item d-flex justify-content-between align-items-center">' +
+          etherscan_a_link(this.hash) + " " +
+          timestamp_formatted(this.timestamp) +
+          '</li>'
+        );
       });
       // Add the new txs to the top of the list
       $("#txs").prepend(items.join(""));
@@ -33,5 +38,5 @@ function etherscan_url(hash) {
   return "https://etherscan.io/tx/" + hash;
 }
 function etherscan_a_link(hash) {
-  return "<a target='_blank' href='" + etherscan_url(hash) + "'>" + hash + "</a>";
+  return "<a target='_blank' href='" + etherscan_url(hash) + "'>" + hash.slice(0,16) + "...</a>";
 }

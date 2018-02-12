@@ -1,6 +1,10 @@
 extends layout
 
 block content
-  h1= title
   script(src='javascripts/reload.js')
-  div(id='txs')
+  div(class="container-fluid mt-2")
+    p This page displays the latest contract creations transactions on the Ethereum mainnet.
+      br
+      | It's refreshed every second and most recent transactions come first. It currently has a 10 blocks lag.
+    div(class="col-sm")
+      ul(class="list-group" id='txs')
