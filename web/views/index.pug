@@ -2,12 +2,5 @@ extends layout
 
 block content
   h1= title
-
-  ul
-  each tx in txs_list
-    li 
-      | #{tx.timestamp_formatted} - 
-      a(href=tx.etherscan_url target="_blank") #{tx.hash} 
-
-  else
-    li No txs.
+  script(src='javascripts/reload.js')
+  div(id='txs')

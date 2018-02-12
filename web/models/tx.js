@@ -10,23 +10,28 @@ var TxSchema = new Schema(
     input: {type: String},
     timestamp: {type: String}
   },
-  { collection: 'txs' }
+  { collection: 'txs',
+    toObject: {virtuals: false},
+    toJSON: {virtuals: false}
+  }
 );
 
 // Virtual properties
+// Note: both have been re-implemented on client side in reload.js
+// and should therefore be removed
+
+// Etherscan URL
 TxSchema
 .virtual('etherscan_url')
 .get(function () {
   return 'https://etherscan.io/tx/' + this.hash;
 });
 
+// Timestamp format
 TxSchema
 .virtual('timestamp_formatted')
 .get(function () {
   return moment.unix(this.timestamp).format('h:mm A');
-  //.format('MMM D, YYYY, h:m A');
-  // Maybe time format should be handled at view level?
-  // + what about time zone. This would be EST
 });
 
 // Export model

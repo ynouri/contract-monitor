@@ -8,9 +8,7 @@ var controller = require('../controllers/controller');
 router.get('/', controller.index);
 
 // Redirect /tx to /
-router.get('/tx', function(req, res) {
-  res.redirect('/');
-});
+router.get('/txs', controller.txs_list_json);
 
 // Tx details
 router.get('/tx/:id', controller.tx_detail);

@@ -3,12 +3,12 @@ Web interface to monitor new contracts created on the Ethereum blockchain.
 
 ## TODO list
 1. ~~Worker: refine the filtering of contract creation txs, based on input data~~
-1. Web & Worker: add a timestamp to txs so that they can be ordered by date. Has to be Mongoose/pymongo compatible
+1. ~~Web & Worker: add a timestamp to txs so that they can be ordered by date. Has to be Mongoose/pymongo compatible~~
 1. Web: add asynchronous refresh of the txs list
 1. Web: refine CSS, add bootstrap
-1. Web: add the JSON GET API enabling to check tx details
 1. Worker: implement a strategy to handle all blocks without timing issues (e.g. loop on block numbers and trigger Celery tasks to analyze a block)
 1. Scripts: refactorize the deploy script, understand why issues arise when webnet network is not deployed
+1. Web: add the JSON GET API enabling to check tx details
 1. Tests: design a test strategy for web and implement it
 1. Fine tune production settings and deploy on AWS
 1. Worker: in app.py, replace the print statements by a proper debugging logs (if possible, similar to JS debug module)
