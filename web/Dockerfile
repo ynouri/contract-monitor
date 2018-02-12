@@ -23,9 +23,9 @@ EXPOSE 3000
 ENV NAME "Contract monitor web"
 
 # Production
-#ENV NODE_ENV "production"
-#CMD [ "npm", "start"]
+ENV NODE_ENV "production"
+CMD [ "npm", "start"]
 
 # Development
-ENV NODE_ENV "development_docker"
-CMD [ "npm", "run", "devstart" ]
+#ENV NODE_ENV "development_docker"
+#CMD [ "npm", "run", "devstart" ]

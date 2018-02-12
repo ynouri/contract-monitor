@@ -1,0 +1,64 @@
+version: "3.2"
+
+services:
+
+  mongodb:
+    image: mongo:3.6.2-jessie
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - mongodb-data:/data/db
+    networks:
+      - webnet
+    ports:
+        - 27017:27017
+    command: mongod --smallfiles --logpath=/dev/null # --quiet
+    deploy:
+      placement:
+        constraints: [node.role == manager]
+
+  worker:
+    image: nouri/contract-monitor_worker:v0.1
+    networks:
+      - webnet
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+    volumes:
+      - type: bind
+        source: ./worker
+        target: /usr/src/worker
+
+  web:
+    image: nouri/contract-monitor_web:v0.1
+    ports:
+      - "80:3000"
+    networks:
+      - webnet
+    deploy:
+      mode: replicated
+      replicas: 1
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 3
+        window: 120s
+    volumes:
+      - type: bind
+        source: ./web
+        target: /usr/src/web
+
+networks:
+  webnet:
+
+
+volumes:
+  mongodb-data:
+    external:
+      name: mongodb-data
