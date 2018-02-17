@@ -9,15 +9,27 @@ web3 = Web3(HTTPProvider(provider))
 
 # Returns the last block number
 def last_block_number():
-    return web3.eth.blockNumber
+    try:
+        block_number = web3.eth.blockNumber
+    except Exception as e:
+        block_number = 0
+        print(e)
+    return block_number
 
 # Returns a dict of transactions involved in a contract creation
 def contract_creation_txs(block_number):
     print("Block # " + str(block_number))
-    block = web3.eth.getBlock(block_number, full_transactions=True)
+
+    try:
+        block = web3.eth.getBlock(block_number, full_transactions=True)
+    except Exception as e:
+        block = None
+        print(e)
+
     if not block:
         print("Block request failed (block # " + str(block_number) + ")")
         return []
+
     txs = []
     for tx in block.transactions:
         if tx.to == None:
@@ -28,6 +40,7 @@ def contract_creation_txs(block_number):
                 'timestamp': block.timestamp
             });
             print("https://etherscan.io/tx/" + tx.hash.hex())
+
     return txs
 
 # Returns a summary of the last block
