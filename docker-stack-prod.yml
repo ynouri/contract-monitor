@@ -27,8 +27,7 @@ services:
       replicas: 1
       restart_policy:
         condition: on-failure
-        delay: 10s
-        max_attempts: 3
+        delay: 600s
         window: 120s
 
   web:
