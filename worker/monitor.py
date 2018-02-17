@@ -2,7 +2,6 @@ import web3
 import json
 import pandas as pd
 from web3 import Web3, HTTPProvider, TestRPCProvider
-import urllib.error
 
 # Infura provider + personal token
 provider = 'https://mainnet.infura.io/GsYhDVGy443tx208GTyj'
@@ -12,7 +11,7 @@ web3 = Web3(HTTPProvider(provider))
 def last_block_number():
     try:
         block_number = web3.eth.blockNumber
-    except urllib.error.URLError as e:
+    except Exception as e:
         block_number = 0
         print(e)
     return block_number
@@ -23,7 +22,7 @@ def contract_creation_txs(block_number):
 
     try:
         block = web3.eth.getBlock(block_number, full_transactions=True)
-    except urllib.error.URLError as e:
+    except Exception as e:
         block = None
         print(e)
 
